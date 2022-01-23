@@ -1,0 +1,146 @@
+html, body {
+  height:100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background-color: black;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+
+.container {
+  width: 50%;
+  margin: 0 auto;
+  /* Flex rules */
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow-container {
+  text-align: center;
+  width: 100%;
+  margin-top: 15px;
+  position:absolute;
+  top:0px;
+}
+
+.wheel-container {
+  text-align: center;
+  width: 100%;
+  margin-top: 35px;
+}
+
+.names-container {
+  position: absolute;
+  top: 0px;
+}
+
+.canvas-button {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  overflow: hidden;
+}
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible-button{
+  color: #fff;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0 10px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 50px;
+  font-weight: bold;
+}
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  width: 20vw;
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+}
+
+.todo-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+span {
+  border-radius: 4px;
+  vertical-align: text-top;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  font-size: 20px;
+}
+
+li{
+  padding-top: 10px;
+}
+
+.delete-todo {
+  vertical-align: middle;
+}
+
+input[type="image" i] {
+  width: 15px;
+  height: 15px;
+}
+
+.delete-button {
+  color: red;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-weight: bold;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 3px solid #000;
+}
+
+/* Add this below all the other styles */
+.empty-state {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: none;
+}
+
+.checklist-icon {
+  margin-bottom: 20px;
+}
+
+.empty-state__title, .empty-state__description {
+  margin-bottom: 20px;
+}
+
+/* Add this below the other styles */
+.todo-list:empty {
+  display: none;
+}
+
+.todo-list:empty + .empty-state {
+  display: flex;
+}
