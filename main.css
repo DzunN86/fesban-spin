@@ -4,6 +4,7 @@ html, body {
   margin: 0;
   border: 0;
   background-color: black;
+  background-image: url("bg-2.png");
 }
 
 input:focus,

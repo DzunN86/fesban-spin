@@ -1,4 +1,4 @@
-const WHEEL_RADIUS = 400;
+const WHEEL_RADIUS = 390;
 const TEXT_FONT_SIZE = 50;
 
 // Create new wheel object specifying the parameters at creation time.
@@ -141,6 +141,7 @@ function addName(text) {
     const name = {
         text,
         id: Date.now(),
+        fillStyle : "#" + Math.floor(Math.random()*16777215).toString(16),
     };
 
     nameList.push(name);
