@@ -83,7 +83,7 @@ function Winwheel(options, drawWheel)
         }
     }
 
-
+    
     // ------------------------------------------
     // If the id of the canvas is set, try to get the canvas as we need it for drawing.
     if (this.canvasId) {

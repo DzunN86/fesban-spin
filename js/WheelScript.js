@@ -23,18 +23,6 @@ let theWheel = new Winwheel({
       text: "Lagu 3",
       id: Math.floor(Math.random() * Date.now()),
     },
-    // { fillStyle: '#7de6ef', text: 'Davy', id: Math.floor(Math.random() * Date.now()) },
-    // { fillStyle: '#eae56f', text: 'Jia', id: Math.floor(Math.random() * Date.now()) },
-    // { fillStyle: '#dc89f3', text: 'Jiebo', id: Math.floor(Math.random() * Date.now()) },
-    // { fillStyle: '#96af30', text: 'Jonathan', id: Math.floor(Math.random() * Date.now()) },
-    // { fillStyle: '#e7706f', text: 'Juan', id: Math.floor(Math.random() * Date.now()) },
-    // { fillStyle: '#7de6ef', text: 'Katie', id: Math.floor(Math.random() * Date.now()) },
-    // { fillStyle: '#e7706f', text: 'Leo', id: Math.floor(Math.random() * Date.now()) },
-    // { fillStyle: '#89f26e', text: 'Marcos', id: Math.floor(Math.random() * Date.now()) },
-    // { fillStyle: '#a128d8', text: 'Minh', id: Math.floor(Math.random() * Date.now()) },
-    // { fillStyle: '#d1b738', text: 'Nick', id: Math.floor(Math.random() * Date.now()) },
-    // { fillStyle: '#785ec4', text: 'Shirley', id: Math.floor(Math.random() * Date.now()) },
-    // { fillStyle: '#96af30', text: 'Tyler', id: Math.floor(Math.random() * Date.now()) },
   ],
   // Specify the animation to use.
   animation: {
@@ -44,6 +32,8 @@ let theWheel = new Winwheel({
     callbackFinished: alertPrize,
   },
 });
+let hasilSpin = [];
+
 
 // -------------------------------------------------------
 // Called when the spin animation has finished by the callback feature of the wheel because I specified callback in the parameters
@@ -55,8 +45,17 @@ function alertPrize(indicatedSegment) {
   // alert("The winner is: " + indicatedSegment.text);
   Swal.fire({
     icon: "success",
+    iconHtml: "✨",
     title: indicatedSegment.text,
   });
+  hasilSpin.push(indicatedSegment.text);
+
+  let listOk = "";
+  for (let i = 0; i < hasilSpin.length; i++) {
+    listOk += hasilSpin[i] + "<br><br>";
+  }
+  document.getElementById("js-laguterpilih").innerHTML = listOk;
+  console.log(hasilSpin);
   resetWheel();
 }
 
@@ -97,7 +96,7 @@ function resetWheel() {
 // -------------------------------------------------------
 
 let nameList = theWheel.segments.filter((segment) => segment != null);
-
+console.log(nameList);
 // -------------------------------------------------------
 // Function for render the list of names.
 // -------------------------------------------------------
@@ -119,8 +118,7 @@ function renderNames(todo) {
   node.setAttribute("data-key", todo.id);
   node.innerHTML = `
     <span><b>${todo.text}</b></span>
-    <input value="${todo.text}"/>
-    <input class="delete-todo js-delete-todo" type="image" src="https://img.icons8.com/fluency/48/fa314a/delete-sign.png"/>
+    <button type="button" class="btn btn-danger btn-sm js-delete-todo" >❌</button>
     `;
 
   if (item) {
@@ -155,8 +153,8 @@ function renderWheel() {
 function addName(text) {
   const name = {
     text,
-    id: Date.now(),
-    fillStyle: "#" + Math.floor(Math.random() * 16777215).toString(16),
+    id: Math.floor(Math.random() * 100),
+    fillStyle: "#" + Math.floor(Math.random() * 16777214).toString(16),
   };
 
   nameList.push(name);
@@ -193,6 +191,8 @@ form.addEventListener("submit", (event) => {
     input.focus();
   }
 });
+
+// Tampilkan Lagu terpilih
 
 // -------------------------------------------------------
 // Event listener for deleting a name from the list.
